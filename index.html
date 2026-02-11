@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Interactive Love Anniversary</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- AOS Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Howler.js for Music -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+    <!-- tsParticles for Floating Hearts/Butterflies -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.min.js"></script>
+
+    <!-- QR Code Generator -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <!-- LANDSCAPE CONTAINER -->
+    <div class="container">
+
+        <!-- PAGE 1: Love Question -->
+        <section id="page1" class="page">
+            <div class="character"><img src="assets/images/character.png" alt="Bunny"></div>
+            <h1>Just because... I love you</h1>
+            <div class="btn-group">
+                <button id="yesBtn">Yes Please</button>
+                <button id="noBtn">No Thank You</button>
+            </div>
+        </section>
+
+        <!-- PAGE 2: Crying Page -->
+        <section id="page2" class="page">
+            <div class="crying-bunny"><img src="assets/gif/cry_bunny.gif" alt="Crying Bunny"></div>
+            <h1>Give me a chance please!</h1>
+            <button id="tryAgainBtn">Try Again</button>
+        </section>
+
+        <!-- PAGE 3: Find The Item Game -->
+        <section id="page3" class="page">
+            <div class="tree">
+                <img src="assets/images/tree.png" alt="Tree Background">
+                <img src="assets/images/hidden_item.png" class="hidden-item" alt="Hidden Item">
+                <img src="assets/images/flower1.png" class="decoration" alt="Flower">
+                <img src="assets/images/flower2.png" class="decoration" alt="Flower">
+                <img src="assets/images/butterfly1.png" class="decoration" alt="Butterfly">
+                <img src="assets/images/butterfly2.png" class="decoration" alt="Butterfly">
+            </div>
+            <h1>Find The Item!</h1>
+            <div class="rules">
+                1) Find the right item<br>
+                2) Click random things<br>
+                3) Get the special surprise
+            </div>
+        </section>
+
+        <!-- PAGE 4: Surprise Gift -->
+        <section id="page4" class="page">
+            <h1>I MADE THESE ALL FOR YOU!</h1>
+            <div class="gift-grid">
+                <div class="gift" data-msg="Flowers"><img src="assets/images/gift1.png" alt="Gift 1"></div>
+                <div class="gift" data-msg="Camera"><img src="assets/images/gift2.png" alt="Gift 2"></div>
+                <div class="gift" data-msg="Letter"><img src="assets/images/gift3.png" alt="Gift 3"></div>
+                <div class="gift" data-msg="Music"><img src="assets/images/gift4.png" alt="Gift 4"></div>
+            </div>
+        </section>
+
+        <!-- PAGE 5: Special Coupons -->
+        <section id="page5" class="page">
+            <h1>Special Surprise</h1>
+            <div class="coupon-grid">
+                <div class="coupon"><img src="assets/images/coupon1.png" alt="Coupon 1"></div>
+                <div class="coupon"><img src="assets/images/coupon2.png" alt="Coupon 2"></div>
+                <div class="coupon"><img src="assets/images/coupon3.png" alt="Coupon 3"></div>
+                <div class="coupon"><img src="assets/images/coupon4.png" alt="Coupon 4"></div>
+                <div class="coupon"><img src="assets/images/coupon5.png" alt="Coupon 5"></div>
+                <div class="coupon"><img src="assets/images/coupon6.png" alt="Coupon 6"></div>
+                <div class="coupon"><img src="assets/images/coupon7.png" alt="Coupon 7"></div>
+                <div class="coupon"><img src="assets/images/coupon8.png" alt="Coupon 8"></div>
+                <div class="coupon"><img src="assets/images/coupon9.png" alt="Coupon 9"></div>
+                <div class="coupon"><img src="assets/images/coupon10.png" alt="Coupon 10"></div>
+                <div class="coupon"><img src="assets/images/coupon11.png" alt="Coupon 11"></div>
+                <div class="coupon"><img src="assets/images/coupon12.png" alt="Coupon 12"></div>
+            </div>
+        </section>
+
+        <!-- PAGE 6: Memory Lane -->
+        <section id="page6" class="page">
+            <h1>Trip Down Memory Lane</h1>
+            <div class="memory-photos">
+                <img src="assets/images/pic1.jpg" alt="Memory 1">
+                <img src="assets/images/pic2.jpg" alt="Memory 2">
+                <img src="assets/images/pic3.jpg" alt="Memory 3">
+                <img src="assets/images/pic4.jpg" alt="Memory 4">
+                <img src="assets/images/pic5.jpg" alt="Memory 5">
+                <img src="assets/images/pic6.jpg" alt="Memory 6">
+            </div>
+        </section>
+
+        <!-- PAGE 7: Words From Heart (Typewriter Anniversary Note) -->
+        <section id="page7" class="page">
+            <h1>Words From My Heart</h1>
+            <div class="love-text" id="loveText"></div>
+        </section>
+
+        <!-- PAGE 8: Guess Our Song -->
+        <section id="page8" class="page">
+            <h1>Guess Our Song!</h1>
+            <div id="qr"><img src="assets/images/qr_frame.png" alt="QR Frame"></div>
+            <div class="music-player">
+                <audio id="song" controls>
+                    <source src="assets/music/song.mp3" type="audio/mp3">
+                </audio>
+            </div>
+            <input type="text" id="guessInput" placeholder="Type your guess">
+            <button id="guessBtn">Check</button>
+        </section>
+
+    </div>
+
+    <!-- MAIN SCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
